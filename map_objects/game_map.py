@@ -141,7 +141,7 @@ class GameMap:
             'risen_corpse': 60,
             'cultist': from_dungeon_level([[15, 2], [40, 4], [60, 6]], self.dungeon_level),
             'unholy_priest': from_dungeon_level([[10, 3], [20, 4], [40, 5], [60, 7]], self.dungeon_level),
-            'shadowy_horror': from_dungeon_level([[5, 3], [15, 5], [25, 6]], self.dungeon_level),
+            'shadowy_horror': from_dungeon_level([[1, 3], [15, 5], [25, 6]], self.dungeon_level),
         }
 
         item_chances = {
@@ -152,7 +152,7 @@ class GameMap:
             'battered_shield': from_dungeon_level([[15, 2]], self.dungeon_level),
             'hardened_shield': from_dungeon_level([[7, 3], [10, 5]], self.dungeon_level),
             'lost_pages': from_dungeon_level([[5, 4], [15, 6]], self.dungeon_level),
-            'dirty_spectacles': from_dungeon_level([[1, 1], [3, 2], [7, 4]], self.dungeon_level),
+            'dirty_spectacles': from_dungeon_level([[1, 1], [2, 2], [7, 4]], self.dungeon_level),
             'rough_trousers': from_dungeon_level([[5, 3], [10, 5]], self.dungeon_level),
             'fine_shoes': from_dungeon_level([[1, 1], [3, 5]], self.dungeon_level),
             'lightning_scroll': from_dungeon_level([[25, 4]], self.dungeon_level),
