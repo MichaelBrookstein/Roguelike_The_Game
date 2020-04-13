@@ -18,7 +18,7 @@ from map_objects.stairs import Stairs
 from entity import Entity
 from game_messages import Message
 from game_functions.item_functions import cast_confuse, cast_fireball, cast_lightning, heal, add_fireball, \
-    add_confusion, add_eldritch_blast, add_lightning
+    add_confusion, add_eldritch_blast, add_lightning, junk
 from game_functions.ability_functions import cast_unholy_bolt_feat
 from map_objects.rectangle import Rect
 from map_objects.tile import Tile
@@ -27,7 +27,7 @@ from random_utils import from_dungeon_level, random_choice_from_dict
 
 
 class GameMap:
-    def __init__(self, width, height, dungeon_level=1):
+    def __init__(self, width, height, dungeon_level=5):
         self.width = width
         self.height = height
         self.tiles = self.initialize_tiles()
@@ -146,22 +146,22 @@ class GameMap:
 
         item_chances = {
             'healing_potion': 50,
-            'dull_sword': from_dungeon_level([[15, 2]], self.dungeon_level),
-            'plain_shirt': from_dungeon_level([[5, 1], [10, 2]], self.dungeon_level),
-            'sharpened_sword': from_dungeon_level([[7, 3], [10, 5]], self.dungeon_level),
-            'battered_shield': from_dungeon_level([[15, 2]], self.dungeon_level),
-            'hardened_shield': from_dungeon_level([[7, 3], [10, 5]], self.dungeon_level),
+            'dull_sword': from_dungeon_level([[15, 2], [3, 4]], self.dungeon_level),
+            'plain_shirt': from_dungeon_level([[5, 1], [10, 2], [3, 4]], self.dungeon_level),
+            'sharpened_sword': from_dungeon_level([[7, 3], [12, 5]], self.dungeon_level),
+            'battered_shield': from_dungeon_level([[15, 2], [3, 4]], self.dungeon_level),
+            'hardened_shield': from_dungeon_level([[7, 3], [12, 5]], self.dungeon_level),
             'lost_pages': from_dungeon_level([[5, 4], [15, 6]], self.dungeon_level),
             'dirty_spectacles': from_dungeon_level([[1, 1], [2, 2], [7, 4]], self.dungeon_level),
-            'rough_trousers': from_dungeon_level([[5, 3], [10, 5]], self.dungeon_level),
+            'rough_trousers': from_dungeon_level([[5, 3], [10, 5], [3, 4]], self.dungeon_level),
             'fine_shoes': from_dungeon_level([[1, 1], [3, 5]], self.dungeon_level),
-            'lightning_scroll': from_dungeon_level([[25, 4]], self.dungeon_level),
-            'fireball_scroll': from_dungeon_level([[25, 6]], self.dungeon_level),
-            'confusion_scroll': from_dungeon_level([[10, 2]], self.dungeon_level),
-            'fireball_tome': from_dungeon_level([[4, 4], [10, 5]], self.dungeon_level),
-            'confusion_tome': from_dungeon_level([[4, 4], [10, 5]], self.dungeon_level),
-            'eldritch_blast_tome': from_dungeon_level([[4, 4], [10, 5]], self.dungeon_level),
-            'lightning_blast_tome': from_dungeon_level([[4, 4], [10, 5]], self.dungeon_level)
+            'lightning_scroll': from_dungeon_level([[15, 4], [20, 6]], self.dungeon_level),
+            'fireball_scroll': from_dungeon_level([[15, 5], [20, 7]], self.dungeon_level),
+            'confusion_scroll': from_dungeon_level([[10, 2] [15, 4]], self.dungeon_level),
+            'fireball_tome': from_dungeon_level([[4, 4], [7, 5]], self.dungeon_level),
+            'confusion_tome': from_dungeon_level([[4, 4], [7, 5]], self.dungeon_level),
+            'eldritch_blast_tome': from_dungeon_level([[4, 4], [7, 5]], self.dungeon_level),
+            'lightning_blast_tome': from_dungeon_level([[4, 4], [7, 5]], self.dungeon_level)
         }
 
         for i in range(number_of_monsters):
@@ -275,7 +275,7 @@ class GameMap:
                     monster.equipment.toggle_equip(tattered_robe_entity)
 
                 elif monster_choice == 'shadowy_horror':
-                    horror_fighter_component = Fighter(hp=60, defense=0, strength=2, accuracy=100, dodge=25, ability_power=0, crit_chance=10, xp=200)
+                    horror_fighter_component = Fighter(hp=75, defense=0, strength=2, accuracy=100, dodge=25, ability_power=0, crit_chance=25, xp=200)
                     ai_component = BasicMonster()
                     enemy_inventory_component = Inventory(5)
                     enemy_equipment_component = Equipment()
@@ -404,6 +404,11 @@ class GameMap:
                     lighttome_info_component = Information('lightning_tome')
                     item = Entity(x, y, 't', libtcod.light_yellow, 'Lightning Bolt Tome', render_order=RenderOrder.ITEM,
                                   item=item_component, info=lighttome_info_component)
+                else:
+                    item_component = Item(use_function=junk)
+                    junk_info_component = Information('junk')
+                    item = Entity(x, y, 'j', libtcod.light_gray, 'Pile of junk', render_order=RenderOrder.ITEM,
+                                  item=item_component, info=junk_info_component)
 
                 entities.append(item)
 
