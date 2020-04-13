@@ -94,7 +94,7 @@ def character_select_menu(con, background_image, screen_width, screen_height):
 def level_up_menu(con, header, player, menu_width, map_width, map_height):
     options = ['Constitution (+20 HP, from {0})'.format(player.fighter.max_hp),
                'Strength (+1 attack, from {0})'.format(player.fighter.strength),
-               'Constitution (+1 defense, from {0})'.format(player.fighter.defense),
+               'Perseverance (+1 defense, from {0})'.format(player.fighter.defense),
                'Agility (+3 dodge, from {0})'.format(player.fighter.dodge),
                'Ability Power (+2 ability power, from {0})'.format(player.fighter.ability_power),
                'Crit Chance (+5 Crit Chance, from {0})'.format(player.fighter.crit_chance)]
