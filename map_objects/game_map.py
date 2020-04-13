@@ -141,7 +141,7 @@ class GameMap:
             'risen_corpse': 60,
             'cultist': from_dungeon_level([[15, 2], [40, 4], [60, 6]], self.dungeon_level),
             'unholy_priest': from_dungeon_level([[10, 3], [20, 4], [40, 5], [60, 7]], self.dungeon_level),
-            'shadowy_horror': from_dungeon_level([[5, 3], [20, 5], [30, 6]], self.dungeon_level),
+            'shadowy_horror': from_dungeon_level([[5, 3], [15, 5], [25, 6]], self.dungeon_level),
         }
 
         item_chances = {
@@ -158,10 +158,10 @@ class GameMap:
             'lightning_scroll': from_dungeon_level([[25, 4]], self.dungeon_level),
             'fireball_scroll': from_dungeon_level([[25, 6]], self.dungeon_level),
             'confusion_scroll': from_dungeon_level([[10, 2]], self.dungeon_level),
-            'fireball_tome': from_dungeon_level([[3, 3], [10, 5]], self.dungeon_level),
-            'confusion_tome': from_dungeon_level([[3, 3], [10, 5]], self.dungeon_level),
-            'eldritch_blast_tome': from_dungeon_level([[3, 3], [10, 5]], self.dungeon_level),
-            'lightning_blast_tome': from_dungeon_level([[3, 3], [10, 5]], self.dungeon_level)
+            'fireball_tome': from_dungeon_level([[4, 4], [10, 5]], self.dungeon_level),
+            'confusion_tome': from_dungeon_level([[4, 4], [10, 5]], self.dungeon_level),
+            'eldritch_blast_tome': from_dungeon_level([[4, 4], [10, 5]], self.dungeon_level),
+            'lightning_blast_tome': from_dungeon_level([[4, 4], [10, 5]], self.dungeon_level)
         }
 
         for i in range(number_of_monsters):
