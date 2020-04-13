@@ -21,6 +21,15 @@ def heal(*args, **kwargs):
 
     return results
 
+def junk(*args, **kwargs):
+    entity = args[0]
+
+    results = []
+
+    results.append({'consumed': True, 'message': Message('You discard the trash.', libtcod.gray)})
+
+    return results
+
 def cast_lightning(*args, **kwargs):
     caster = args[0]
     entities = kwargs.get('entities')
