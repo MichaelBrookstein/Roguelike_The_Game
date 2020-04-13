@@ -139,9 +139,9 @@ class GameMap:
 
         monster_chances = {
             'risen_corpse': 60,
-            'cultist': from_dungeon_level([[10, 2], [40, 4], [60, 6]], self.dungeon_level),
-            'unholy_priest': from_dungeon_level([[15, 3], [20, 4], [40, 5], [60, 7]], self.dungeon_level),
-            'shadowy_horror': from_dungeon_level([[10, 3], [20, 5], [30, 6]], self.dungeon_level),
+            'cultist': from_dungeon_level([[15, 2], [40, 4], [60, 6]], self.dungeon_level),
+            'unholy_priest': from_dungeon_level([[10, 3], [20, 4], [40, 5], [60, 7]], self.dungeon_level),
+            'shadowy_horror': from_dungeon_level([[5, 3], [20, 5], [30, 6]], self.dungeon_level),
         }
 
         item_chances = {
@@ -266,7 +266,7 @@ class GameMap:
                                      inventory=enemy_inventory_component, abilities=enemey_abilities_component, render_order=RenderOrder.ACTOR,
                                      ai=ai_component, equipment=enemy_equipment_component, info=enemy_info_component)
 
-                    eldritch_bolt = Feat(name="Eldritch Bolt", cooldown=3, damage=10, feat_function=cast_unholy_bolt_feat)
+                    eldritch_bolt = Feat(name="Eldritch Bolt", cooldown=3, damage=7, feat_function=cast_unholy_bolt_feat)
 
                     monster.abilities.add_feat([eldritch_bolt])
                     monster.inventory.add_item(corrupted_scripture_entity)
