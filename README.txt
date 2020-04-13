@@ -15,4 +15,6 @@ P = Abilities
 Tab = Character Stats
 Enter = Move Stairs
 
+Mouse over items/characters to see info
+
 Run engine.py to play
