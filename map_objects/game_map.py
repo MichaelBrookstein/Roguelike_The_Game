@@ -180,7 +180,7 @@ class GameMap:
                     enemy_equipment_component = Equipment()
                     enemy_info_component = Information('risen_corpse')
 
-                    ragged_shoes_component = Equippable(EquipmentSlots.UPPER_BODY, dodge_bonus=5, accuracy_bonus=5)
+                    ragged_shoes_component = Equippable(EquipmentSlots.FEET, dodge_bonus=5, accuracy_bonus=5)
                     ragged_shoes_info_component = Information('ragged_shoes')
                     ragged_shoes_entity = Entity(0, 0, 's', libtcod.Color(125, 80, 12), 'Ragged Shoes',
                                             equippable=ragged_shoes_component, info=ragged_shoes_info_component)
@@ -195,7 +195,7 @@ class GameMap:
                     mystic_hood_entity = Entity(0, 0, '^', libtcod.Color(159, 71, 214), 'Mystic Hood',
                                             equippable=mystic_hood_component, info=mystic_hood_info_component)
 
-                    broken_sword_component = Equippable(EquipmentSlots.HEAD, strength_bonus=1, crit_chance_bonus=3)
+                    broken_sword_component = Equippable(EquipmentSlots.MAIN_HAND, strength_bonus=1, crit_chance_bonus=3)
                     broken_sword_info_component = Information('broken_sword')
                     broken_sword_entity = Entity(0, 0, '-', libtcod.Color(219, 219, 219), 'Broken Sword',
                                             equippable=broken_sword_component, info=broken_sword_info_component)
@@ -257,7 +257,7 @@ class GameMap:
                     tattered_robe_entity = Entity(0, 0, 'C', libtcod.Color(232, 216, 125), 'Tattered Robe',
                                             equippable=tattered_robe_component, info=tattered_robe_info_component)
 
-                    corrupted_scripture_component = Equippable(EquipmentSlots.MAIN_HAND, max_hp_bonus=-10, ability_power_bonus=5)
+                    corrupted_scripture_component = Equippable(EquipmentSlots.OFF_HAND, max_hp_bonus=-10, ability_power_bonus=5)
                     corrupted_scripture_info_component = Information('corrupted_scripture')
                     corrupted_scripture_entity = Entity(0, 0, '#', libtcod.Color(110, 0, 0), 'Corrupted Scripture',
                                             equippable=corrupted_scripture_component, info=corrupted_scripture_info_component)
@@ -362,7 +362,7 @@ class GameMap:
                     item = Entity(x, y, 's', libtcod.Color(235, 190, 66), 'Fine Shoes', render_order=RenderOrder.ITEM, equippable=fshoes_equippable_component,
                                   info=fshoes_info_component)
                 elif item_choice == 'rough_trousers':
-                    rpants_equippable_component = Equippable(EquipmentSlots.FEET, max_hp_bonus=15, defense_bonus=2, dodge_bonus=-10)
+                    rpants_equippable_component = Equippable(EquipmentSlots.LOWER_BODY, max_hp_bonus=15, defense_bonus=2, dodge_bonus=-10)
                     rpants_info_component = Information('rough_trousers')
                     item = Entity(x, y, 'p', libtcod.Color(237, 114, 19), 'Rough Trousers', render_order=RenderOrder.ITEM, equippable=rpants_equippable_component,
                                   info=rpants_info_component)
