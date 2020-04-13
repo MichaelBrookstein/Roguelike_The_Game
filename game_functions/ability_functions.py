@@ -74,7 +74,8 @@ def cast_insanity_feat(*args, **kwargs):
     for entity in entities:
 
         if libtcod.map_is_in_fov(fov_map, entity.x, entity.y):
-            target_list.append(entity)
+            if hasattr(entity, "fighter"):
+                target_list.append(entity)
 
         if entity.x == target_x and entity.y == target_y and entity.ai:
 
