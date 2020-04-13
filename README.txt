@@ -14,6 +14,7 @@ I = Inventory
 P = Abilities
 Tab = Character Stats
 Enter = Move Stairs
+Esc = Quit
 
 Mouse over items/characters to see info
 
