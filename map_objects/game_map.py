@@ -338,13 +338,13 @@ class GameMap:
                                   info=ssword_info_component)
                 elif item_choice == 'battered_shield':
                     bshield_equippable_component = Equippable(EquipmentSlots.OFF_HAND, max_hp_bonus=10, defense_bonus=1)
-                    bshield_info_component = Information('broken_shield')
-                    item = Entity(x, y, '[', libtcod.orange, 'Shield', render_order=RenderOrder.ITEM, equippable=bshield_equippable_component,
+                    bshield_info_component = Information('battered_shield')
+                    item = Entity(x, y, '[', libtcod.orange, 'Battered Shield', render_order=RenderOrder.ITEM, equippable=bshield_equippable_component,
                                   info=bshield_info_component)
                 elif item_choice == 'hardened_shield':
                     hshield_equippable_component = Equippable(EquipmentSlots.OFF_HAND, max_hp_bonus=15, defense_bonus=2)
                     hshield_info_component = Information('hardened_shield')
-                    item = Entity(x, y, '[', libtcod.darker_orange, 'Shield', render_order=RenderOrder.ITEM, equippable=hshield_equippable_component,
+                    item = Entity(x, y, '[', libtcod.darker_orange, 'Hardened Shield', render_order=RenderOrder.ITEM, equippable=hshield_equippable_component,
                                   info=hshield_info_component)
                 elif item_choice == 'lost_pages':
                     lpages_equippable_component = Equippable(EquipmentSlots.OFF_HAND, ability_power_bonus=2, dodge_bonus=5)
