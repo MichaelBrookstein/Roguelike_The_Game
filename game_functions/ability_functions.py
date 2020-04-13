@@ -179,6 +179,8 @@ def cast_eldritch_blast_feat(*args, **kwargs):
             results.append({'performed': True, 'message': Message('The {0} gets blasted for {1} hit points.'.format(entity.name, damage + (2*ability_power)), libtcod.orange)})
             results.extend(entity.fighter.take_damage(damage + (2*ability_power)))
 
+            break
+
     else:
         results.append({'performed': False, 'message': Message('There is no targetable enemy at that location.', libtcod.yellow)})
 
