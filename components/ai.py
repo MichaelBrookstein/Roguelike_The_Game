@@ -28,7 +28,7 @@ class AbilityMonster:
 
         if libtcod.map_is_in_fov(fov_map, monster.x, monster.y):
             target = target
-            if monster.distance_to(target) >= 2 and monster.abilities is not None:
+            if monster.distance_to(target) >= 3 and monster.abilities is not None:
                 for feat in monster.abilities.feats:
                     if feat.turn_performed is None or (game_turn_counter - feat.turn_performed > feat.cooldown):
                         results.extend(monster.abilities.perform(feat, turn_performed=game_turn_counter, target=target,
