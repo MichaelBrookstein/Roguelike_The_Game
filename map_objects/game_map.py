@@ -140,8 +140,8 @@ class GameMap:
         monster_chances = {
             'risen_corpse': 60,
             'cultist': from_dungeon_level([[15, 2], [40, 4], [60, 6]], self.dungeon_level),
-            'unholy_priest': from_dungeon_level([[10, 3], [20, 4], [40, 5], [60, 7]], self.dungeon_level),
-            'shadowy_horror': from_dungeon_level([[1, 3], [15, 5], [25, 6]], self.dungeon_level),
+            'unholy_priest': from_dungeon_level([[10, 3], [20, 4], [30, 5], [50, 7]], self.dungeon_level),
+            'shadowy_horror': from_dungeon_level([[1, 3], [5, 5], [10, 6]], self.dungeon_level),
         }
 
         item_chances = {
