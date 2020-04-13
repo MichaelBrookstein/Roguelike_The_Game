@@ -158,10 +158,10 @@ class GameMap:
             'lightning_scroll': from_dungeon_level([[25, 4]], self.dungeon_level),
             'fireball_scroll': from_dungeon_level([[25, 6]], self.dungeon_level),
             'confusion_scroll': from_dungeon_level([[10, 2]], self.dungeon_level),
-            'fireball_tome': from_dungeon_level([[5, 3], [10, 5]], self.dungeon_level),
-            'confusion_tome': from_dungeon_level([[5, 3], [10, 5]], self.dungeon_level),
-            'eldritch_blast_tome': from_dungeon_level([[5, 3], [10, 5]], self.dungeon_level),
-            'lightning_blast_tome': from_dungeon_level([[5, 3], [10, 5]], self.dungeon_level)
+            'fireball_tome': from_dungeon_level([[3, 3], [10, 5]], self.dungeon_level),
+            'confusion_tome': from_dungeon_level([[3, 3], [10, 5]], self.dungeon_level),
+            'eldritch_blast_tome': from_dungeon_level([[3, 3], [10, 5]], self.dungeon_level),
+            'lightning_blast_tome': from_dungeon_level([[3, 3], [10, 5]], self.dungeon_level)
         }
 
         for i in range(number_of_monsters):
