@@ -411,7 +411,7 @@ def play_game(player, entities, game_map, message_log, game_state, con, panel, p
                 if leveled_up:
                     message_log.add_message(Message(
                         'You have faced enough horrors and grow stronger, you reach level {0}'.format(
-                            player.level.current_level) + '!', libtcod.yellow))
+                            player.level.curr_level) + '!', libtcod.yellow))
                     previous_game_state = game_state
                     game_state = GameStates.LEVEL_UP
 
