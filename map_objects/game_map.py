@@ -157,7 +157,7 @@ class GameMap:
             'fine_shoes': from_dungeon_level([[1, 1], [3, 5]], self.dungeon_level),
             'lightning_scroll': from_dungeon_level([[15, 4], [20, 6]], self.dungeon_level),
             'fireball_scroll': from_dungeon_level([[15, 5], [20, 7]], self.dungeon_level),
-            'confusion_scroll': from_dungeon_level([[10, 2] [15, 4]], self.dungeon_level),
+            'confusion_scroll': from_dungeon_level([[10, 2], [15, 4]], self.dungeon_level),
             'fireball_tome': from_dungeon_level([[4, 4], [7, 5]], self.dungeon_level),
             'confusion_tome': from_dungeon_level([[4, 4], [7, 5]], self.dungeon_level),
             'eldritch_blast_tome': from_dungeon_level([[4, 4], [7, 5]], self.dungeon_level),
