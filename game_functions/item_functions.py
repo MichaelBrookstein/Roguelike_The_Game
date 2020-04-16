@@ -14,7 +14,7 @@ def heal(*args, **kwargs):
     results = []
 
     if entity.fighter.hp == entity.fighter.max_hp:
-        results.append({'consumed': False, 'message': Message('You are already at full health', libtcod.yellow)})
+        results.append({'consumed': False, 'message': Message('You are already at full health.', libtcod.yellow)})
     else:
         entity.fighter.heal(amount)
         results.append({'consumed': True, 'message': Message('Your wounds start to feel better!', libtcod.green)})
@@ -115,7 +115,7 @@ def add_fireball(*args, **kwargs):
 
     for feat in player.abilities.feats:
         if feat.name == 'Fireball':
-            results.append({'consumed': False, 'message': Message('You already know that feat!')})
+            results.append({'consumed': False, 'message': Message('You already know that Ability!')})
             known = True
     if not known:
         add_results = player.abilities.add_feat([Feat(name='Fireball', cooldown=20, feat_function=cast_fireball_feat, targeting=True, targeting_message=Message(
@@ -133,7 +133,7 @@ def add_confusion(*args, **kwargs):
 
     for feat in player.abilities.feats:
         if feat.name == 'Confusion':
-            results.append({'consumed': False, 'message': Message('You already know that feat!')})
+            results.append({'consumed': False, 'message': Message('You already know that Ability!')})
             known = True
     if not known:
         add_results = player.abilities.add_feat([Feat(name="Confusion", cooldown=5, feat_function=cast_confusion_feat, duration=3, targeting=True, targeting_message=Message(
@@ -151,7 +151,7 @@ def add_eldritch_blast(*args, **kwargs):
 
     for feat in player.abilities.feats:
         if feat.name == 'Eldritch Blast':
-            results.append({'consumed': False, 'message': Message('You already know that feat!')})
+            results.append({'consumed': False, 'message': Message('You already know that Ability!')})
             known = True
     if not known:
         add_results = player.abilities.add_feat([Feat(name="Eldritch Blast", cooldown=10, feat_function=cast_eldritch_blast_feat, damage=5, targeting=True, targeting_message=Message(
@@ -168,7 +168,7 @@ def add_lightning(*args, **kwargs):
 
     for feat in player.abilities.feats:
         if feat.name == 'Lightning Bolt':
-            results.append({'consumed': False, 'message': Message('You already know that feat!')})
+            results.append({'consumed': False, 'message': Message('You already know that Ability!')})
             known = True
     if not known:
         add_results = player.abilities.add_feat([Feat(name="Lightning Bolt", cooldown=10, damage=15, feat_function=cast_lightning_feat)])
