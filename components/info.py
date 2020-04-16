@@ -19,7 +19,7 @@ class Information:
                                'In a pinch, the thief can temporarily dissolve into the shadows to bypass enemies.'
             return self.description
         elif self.name == 'brute':
-            self.description = 'Calloused and bruied, The brute brings raw strength where wisdom may fail. Powerful blows and weathered physique makes up the arsenal of this inured soul.'
+            self.description = 'Calloused and bruised, The brute brings raw strength where wisdom may fail. Powerful blows and a weathered physique makes up the arsenal of this inured soul.'
             return self.description
         elif self.name == 'occultist':
             self.description = 'Exiled for forbidden insight, the occultist brings unnatural abilities with him into the depths.' \
@@ -56,7 +56,7 @@ class Information:
             self.description = "The handle is cold unlike the blade; warm to the touch. It grants a boost in offense"
             return self.description
         elif self.name == 'tattered_robe':
-            self.description = "The cloth use to be white, except for where it began to sink into it's former wearer. It grants a moderate boost in defense."
+            self.description = "The cloth used to be white, except for where it began to sink into it's former wearer. It grants a moderate boost in defense."
             return self.description
         elif self.name == 'corrupted_scripture':
             self.description = "It's pages are covered in an unknown language and vibrates slightly as they turn. It has a moderate glow of energy."
@@ -71,7 +71,7 @@ class Information:
             self.description = "Alluring"
             return self.description
         elif self.name == 'healing_potion':
-            self.description = "Purple liquid splashes around a small vessel. This will heal you."
+            self.description = "Purple liquid splashes around inside a small vessel. This will heal you."
             return self.description
         elif self.name == 'dull_sword':
             self.description = "Blunted and abandoned, but it may yet serve a purpose. It provides a boost in offense."
@@ -98,7 +98,7 @@ class Information:
             self.description = "An odd luxury made with fine fabric. It provides comfort and a moderate boost in dodge and accuracy."
             return self.description
         elif self.name == 'rough_trousers':
-            self.description = "The material is tough, stiff and uncomfortable. It provides a moderate bonus in defense at the cost of dodge."
+            self.description = "The material is tough, stiff and uncomfortable. It provides a moderate bonus in defense at the cost of agility."
             return self.description
         elif self.name == 'fireball_scroll':
             self.description = "The words glow with fiery power."

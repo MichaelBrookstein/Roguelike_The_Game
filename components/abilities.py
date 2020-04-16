@@ -14,7 +14,7 @@ class Abilities:
             if len(self.feats) >= self.ability_limit:
                 results.append({
                     'consumed': False,
-                    'message': Message('You cannot learn any new feats.', libtcod.yellow)
+                    'message': Message('You cannot learn any new Abilities.', libtcod.yellow)
                 })
             else:
                 results.append({

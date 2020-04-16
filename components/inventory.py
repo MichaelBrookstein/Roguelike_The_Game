@@ -16,7 +16,7 @@ class Inventory:
         if self.number_of_items > self.capacity:
             results.append({
                 'item_added': None,
-                'message': Message('You cannot carry any more, your inventory is full', libtcod.yellow)
+                'message': Message('You cannot carry any more, your inventory is full.', libtcod.yellow)
             })
         else:
             self.number_of_items += 1
@@ -51,7 +51,7 @@ class Inventory:
             if equippable_component:
                 results.append({'equip': item_entity})
             else:
-                results.append({'message': Message('The {0} cannot be used'.format(item_entity.name), libtcod.yellow)})
+                results.append({'message': Message('The {0} cannot be used.'.format(item_entity.name), libtcod.yellow)})
         else:
             if item_component.targeting and not (kwargs.get('target_x') or kwargs.get('target_y')):
                 results.append({'targeting': item_entity})
@@ -91,7 +91,7 @@ class Inventory:
             results.append({'enemy_item_dropped': item})
         else:
             self.remove_item(item, item_index, player=True)
-            results.append({'item_dropped': item, 'message': Message('You dropped the {0}'.format(item.name),
+            results.append({'item_dropped': item, 'message': Message('You dropped the {0}.'.format(item.name),
                                                                      libtcod.yellow)})
 
         return results

@@ -187,10 +187,10 @@ class Equipment:
         if slot == EquipmentSlots.MAIN_HAND:
             if self.main_hand == equippable_entity:
                 self.main_hand = None
-                results.append({'dequipped': equippable_entity})
+                results.append({'unequipped': equippable_entity})
             else:
                 if self.main_hand:
-                    results.append({'dequipped': self.main_hand})
+                    results.append({'unequipped': self.main_hand})
 
                 self.main_hand = equippable_entity
                 results.append({'equipped': equippable_entity})
@@ -198,10 +198,10 @@ class Equipment:
         elif slot == EquipmentSlots.OFF_HAND:
             if self.off_hand == equippable_entity:
                 self.off_hand = None
-                results.append({'dequipped': equippable_entity})
+                results.append({'unequipped': equippable_entity})
             else:
                 if self.off_hand:
-                    results.append({'dequipped': self.off_hand})
+                    results.append({'unequipped': self.off_hand})
 
                 self.off_hand = equippable_entity
                 results.append({'equipped': equippable_entity})
@@ -209,21 +209,21 @@ class Equipment:
         elif slot == EquipmentSlots.UPPER_BODY:
             if self.upper_body == equippable_entity:
                 self.upper_body = None
-                results.append({'dequipped': equippable_entity})
+                results.append({'unequipped': equippable_entity})
             else:
                 if self.upper_body:
-                    results.append({'dequipped': self.upper_body})
+                    results.append({'unequipped': self.upper_body})
 
                 self.upper_body = equippable_entity
-                results.append({'equipped': equippable_entity})
+                results.append({'unequipped': equippable_entity})
 
         elif slot == EquipmentSlots.LOWER_BODY:
             if self.lower_body == equippable_entity:
                 self.lower_body = None
-                results.append({'dequipped': equippable_entity})
+                results.append({'unequipped': equippable_entity})
             else:
                 if self.lower_body:
-                    results.append({'dequipped': self.lower_body})
+                    results.append({'unequipped': self.lower_body})
 
                 self.lower_body = equippable_entity
                 results.append({'equipped': equippable_entity})
@@ -231,10 +231,10 @@ class Equipment:
         elif slot == EquipmentSlots.HEAD:
             if self.head == equippable_entity:
                 self.head = None
-                results.append({'dequipped': equippable_entity})
+                results.append({'unequipped': equippable_entity})
             else:
                 if self.head:
-                    results.append({'dequipped': self.head})
+                    results.append({'unequipped': self.head})
 
                 self.head = equippable_entity
                 results.append({'equipped': equippable_entity})
@@ -242,10 +242,10 @@ class Equipment:
         elif slot == EquipmentSlots.FEET:
             if self.feet == equippable_entity:
                 self.feet = None
-                results.append({'dequipped': equippable_entity})
+                results.append({'unequipped': equippable_entity})
             else:
                 if self.feet:
-                    results.append({'dequipped': self.feet})
+                    results.append({'unequipped': self.feet})
 
                 self.feet = equippable_entity
                 results.append({'equipped': equippable_entity})
