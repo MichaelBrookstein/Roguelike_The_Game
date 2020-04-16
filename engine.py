@@ -32,6 +32,7 @@ def main():
     game_map = None
     message_log = None
     game_state = None
+    
 
     show_main_menu = True
     show_character_select = False
@@ -53,7 +54,7 @@ def main():
                       constants['screen_height'])
 
             if show_load_error_message:
-                message_box(con, 'No save game to load', 50, constants['screen_width'], constants['screen_height'])
+                message_box(con, 'No Save Game to Load', 50, constants['screen_width'], constants['screen_height'])
 
             libtcod.console_flush()
 
@@ -72,7 +73,7 @@ def main():
 
             elif load_saved_game:
                 try:
-                    player, entities, game_map, message_log, game_state = load_game()
+                    player, entities, game_map, message_log, game_state, permanent_cooldown_counter = load_game()
                     show_main_menu = False
                 except FileNotFoundError:
                     show_load_error_message = True
@@ -93,30 +94,30 @@ def main():
             occultist = action.get('occultist')
 
             if thief:
-                player, entities, game_map, message_log, game_state = initialize_game(constants, "thief")
+                player, entities, game_map, message_log, game_state, permanent_cooldown_counter = initialize_game(constants, "thief")
                 game_state = GameStates.PLAYERS_TURN
                 show_character_select = False
 
             elif brute:
-                player, entities, game_map, message_log, game_state = initialize_game(constants, "brute")
+                player, entities, game_map, message_log, game_state, permanent_cooldown_counter = initialize_game(constants, "brute")
                 player.fighter.heal(player.inventory.items[0][0].equippable.max_hp_bonus)
                 game_state = GameStates.PLAYERS_TURN
                 show_character_select = False
 
             elif occultist:
-                player, entities, game_map, message_log, game_state = initialize_game(constants, "occultist")
+                player, entities, game_map, message_log, game_state, permanent_cooldown_counter = initialize_game(constants, "occultist")
                 game_state = GameStates.PLAYERS_TURN
                 show_character_select = False
 
         elif not (show_main_menu and show_character_select):
             libtcod.console_clear(con)
             play_game(player, entities, game_map, message_log, game_state, con, panel, panel_bg, info, info_bg,
-                      player_con, player_con_bg, constants)
+                      player_con, player_con_bg, constants, permanent_cooldown_counter)
 
             show_main_menu = True
 
 
-def play_game(player, entities, game_map, message_log, game_state, con, panel, panel_bg, info, info_bg, player_con, player_con_bg, constants):
+def play_game(player, entities, game_map, message_log, game_state, con, panel, panel_bg, info, info_bg, player_con, player_con_bg, constants, permanent_cooldown_counter):
     fov_recompute = True
 
     fov_map = initialize_fov(game_map)
@@ -131,6 +132,11 @@ def play_game(player, entities, game_map, message_log, game_state, con, panel, p
     targeting_feat = None
 
     game_turn_counter = 0
+    cooldown_counter = permanent_cooldown_counter
+    
+    
+    
+    
 
     while not libtcod.console_is_window_closed():
         libtcod.sys_check_for_event(libtcod.EVENT_KEY_PRESS | libtcod.EVENT_MOUSE, key, mouse)
@@ -237,8 +243,8 @@ def play_game(player, entities, game_map, message_log, game_state, con, panel, p
                 player.abilities.feats):
             feat = player.abilities.feats[ability_index]
 
-            if feat.turn_performed is None or (game_turn_counter - feat.turn_performed > feat.cooldown):
-                player_turn_results.extend(player.abilities.perform(feat, turn_performed=game_turn_counter, entities=entities, fov_map=fov_map,
+            if feat.turn_performed is None or (cooldown_counter - feat.turn_performed > feat.cooldown):
+                player_turn_results.extend(player.abilities.perform(feat, turn_performed=cooldown_counter, entities=entities, fov_map=fov_map,
                                                                 ability_power=player.fighter.ability_power))
             else:
                 message_log.add_message(Message('That ability is on cooldown.', libtcod.white))
@@ -287,8 +293,8 @@ def play_game(player, entities, game_map, message_log, game_state, con, panel, p
                     item.selected = False
 
                 else:
-                    if feat.turn_performed is None or game_state == GameStates.TARGETING or (game_turn_counter - feat.turn_performed > feat.cooldown):
-                        feat_use_results = player.abilities.perform(targeting_feat, turn_performed=game_turn_counter, entities=entities, fov_map=fov_map,
+                    if feat.turn_performed is None or game_state == GameStates.TARGETING or (cooldown_counter - feat.turn_performed > feat.cooldown):
+                        feat_use_results = player.abilities.perform(targeting_feat, turn_performed=cooldown_counter, entities=entities, fov_map=fov_map,
                                                                     target_x=target_x, target_y=target_y,
                                                                     ability_power=player.fighter.ability_power)
                         player_turn_results.extend(feat_use_results)
@@ -318,7 +324,7 @@ def play_game(player, entities, game_map, message_log, game_state, con, panel, p
                     if hasattr(item[0], 'selected') and item[0].selected:
                         item[0].selected = False
             else:
-                save_game(player, entities, game_map, message_log, game_state)
+                save_game(player, entities, game_map, message_log, game_state, cooldown_counter)
 
                 return True
 
@@ -375,13 +381,13 @@ def play_game(player, entities, game_map, message_log, game_state, con, panel, p
 
                 for equip_result in equip_results:
                     equipped = equip_result.get('equipped')
-                    dequipped = equip_result.get('dequipped')
+                    unequipped = equip_result.get('unequipped')
 
                     if equipped:
                         message_log.add_message(Message('You equipped the {0}'.format(equipped.name)))
 
-                    if dequipped:
-                        message_log.add_message(Message('You dequipped the {0}'.format(dequipped.name)))
+                    if unequipped:
+                        message_log.add_message(Message('You unequipped the {0}'.format(unequipped.name)))
 
                 game_state = GameStates.ENEMY_TURN
 
@@ -402,7 +408,7 @@ def play_game(player, entities, game_map, message_log, game_state, con, panel, p
             if targeting_cancelled:
                 game_state = previous_game_state
 
-                message_log.add_message(Message('Targeting cancelled'))
+                message_log.add_message(Message('Targeting Cancelled'))
 
             if xp:
                 leveled_up = player.level.add_xp(xp)
@@ -417,11 +423,12 @@ def play_game(player, entities, game_map, message_log, game_state, con, panel, p
 
         if game_state == GameStates.ENEMY_TURN:
             game_turn_counter += 1
+            cooldown_counter += 1
 
             for feat in player.abilities.feats:
                 if feat.turn_performed is not None:
-                    if ((game_turn_counter - 1) - feat.turn_performed) < feat.cooldown:
-                        feat.turn_ready = str(feat.cooldown - (game_turn_counter - feat.turn_performed) + 1)
+                    if ((cooldown_counter - 1) - feat.turn_performed) < feat.cooldown:
+                        feat.turn_ready = str(feat.cooldown - (cooldown_counter - feat.turn_performed) + 1)
                     else:
                         feat.turn_ready = "Ready!"
 

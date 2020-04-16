@@ -31,23 +31,23 @@ def menu(con, header, options, width, screen_width, screen_height):
 
 def inventory_menu(con, header, player, inventory_width, map_width, map_height):
     if len(player.inventory.items) == 0:
-        options = ['Inventory is empty.']
+        options = ['Inventory is Empty.']
     else:
         options = []
 
         for item_array in player.inventory.items:
             if player.equipment.main_hand == item_array[0]:
-                options.append('{0} (on main hand) x{1}'.format(item_array[0].name, len(item_array)))
+                options.append('{0} (On Main Hand) x{1}'.format(item_array[0].name, len(item_array)))
             elif player.equipment.off_hand == item_array[0]:
-                options.append('{0} (on off hand) x{1}'.format(item_array[0].name, len(item_array)))
+                options.append('{0} (On Off Hand) x{1}'.format(item_array[0].name, len(item_array)))
             elif player.equipment.upper_body == item_array[0]:
-                options.append('{0} (on upper body) x{1}'.format(item_array[0].name, len(item_array)))
+                options.append('{0} (On Upper Body) x{1}'.format(item_array[0].name, len(item_array)))
             elif player.equipment.lower_body == item_array[0]:
-                options.append('{0} (on lower body) x{1}'.format(item_array[0].name, len(item_array)))
+                options.append('{0} (On Lower Body) x{1}'.format(item_array[0].name, len(item_array)))
             elif player.equipment.head == item_array[0]:
-                options.append('{0} (on head) x{1}'.format(item_array[0].name, len(item_array)))
+                options.append('{0} (On Head) x{1}'.format(item_array[0].name, len(item_array)))
             elif player.equipment.feet == item_array[0]:
-                options.append('{0} (on feet) x{1}'.format(item_array[0].name, len(item_array)))
+                options.append('{0} (On Feet) x{1}'.format(item_array[0].name, len(item_array)))
             else:
                 options.append('{0} x{1}'.format(item_array[0].name, len(item_array)))
 
@@ -56,7 +56,7 @@ def inventory_menu(con, header, player, inventory_width, map_width, map_height):
 def ability_menu(con, header, player, abilities_width, map_width, map_height):
 
     if len(player.abilities.feats) == 0:
-        options = ['You have no abilities.']
+        options = ['You have no Abilities.']
     else:
         options = []
 
@@ -78,14 +78,14 @@ def main_menu(con, background_image, screen_width, screen_height):
     libtcod.console_print_ex(0, int(screen_width / 2), int(screen_height / 2) - 4, libtcod.BKGND_NONE, libtcod.CENTER,
                              'Quest of Shadows')
 
-    menu(con, '', ['Play a new game', 'Continue last game', 'Quit'], 24, screen_width, screen_height)
+    menu(con, '', ['Play a New Game', 'Continue Last Game', 'Quit'], 24, screen_width, screen_height)
 
 def character_select_menu(con, background_image, screen_width, screen_height):
     libtcod.image_blit_2x(background_image, 0, 0, 0)
 
     libtcod.console_set_default_foreground(0, libtcod.dark_purple)
     libtcod.console_print_ex(0, int(screen_width / 2), int(screen_height / 2) - 4, libtcod.BKGND_NONE, libtcod.CENTER,
-                             'Choose your character...')
+                             'Choose your Character...')
 
 
     menu(con, '', ['The Thief', 'The Brute', 'The Occultist'], 24, screen_width, screen_height)
@@ -93,10 +93,10 @@ def character_select_menu(con, background_image, screen_width, screen_height):
 
 def level_up_menu(con, header, player, menu_width, map_width, map_height):
     options = ['Constitution (+20 HP, from {0})'.format(player.fighter.max_hp),
-               'Strength (+1 attack, from {0})'.format(player.fighter.strength),
-               'Perseverance (+1 defense, from {0})'.format(player.fighter.defense),
-               'Agility (+3 dodge, from {0})'.format(player.fighter.dodge),
-               'Ability Power (+2 ability power, from {0})'.format(player.fighter.ability_power),
+               'Strength (+1 Attack, from {0})'.format(player.fighter.strength),
+               'Perseverance (+1 Defense, from {0})'.format(player.fighter.defense),
+               'Agility (+3 Dodge, from {0})'.format(player.fighter.dodge),
+               'Ability Power (+2 Ability Power, from {0})'.format(player.fighter.ability_power),
                'Crit Chance (+5 Crit Chance, from {0})'.format(player.fighter.crit_chance)]
 
     menu(con, header, options, menu_width, map_width, map_height)
