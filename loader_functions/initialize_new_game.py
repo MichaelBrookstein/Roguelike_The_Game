@@ -111,5 +111,7 @@ def initialize_game(constants, chosen):
     message_log = MessageLog(constants['message_x'], constants['message_width'], constants['message_height'])
 
     game_state = GameStates.PLAYERS_TURN
+    
+    permanent_cooldown_counter = 0
 
-    return player, entities, game_map, message_log, game_state
+    return player, entities, game_map, message_log, game_state, permanent_cooldown_counter
