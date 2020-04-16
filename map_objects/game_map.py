@@ -407,7 +407,7 @@ class GameMap:
                 else:
                     item_component = Item(use_function=junk)
                     junk_info_component = Information('junk')
-                    item = Entity(x, y, 'j', libtcod.light_gray, 'Pile of junk', render_order=RenderOrder.ITEM,
+                    item = Entity(x, y, 'j', libtcod.light_gray, 'Pile of Junk', render_order=RenderOrder.ITEM,
                                   item=item_component, info=junk_info_component)
 
                 entities.append(item)
